@@ -1,22 +1,30 @@
 
-<div [formGroup]="form">
-  <label [attr.for]="question.key">{{question.value}}</label>
+<div [formGroup]="form" class="mb-3">
+  <label [attr.for]="question.key" class="text-sm font-bold" >{{question.value}}</label>
   <div [ngSwitch]="question.controlType">
     <input
       *ngSwitchCase="'textbox'"
       [formControlName]="question.key"
       [type]="question.type"
       [id]="question.key"
+      class="w-full px-3 py-2 border rounded-md"
     >
     <select
       *ngSwitchCase="'dropdown'"
       [id]="question.key"
       [formControlName]="question.key"
+      class="border w-60 h-10 text-black/90 px-1"
     >
-      <option *ngFor="let opt of question.options" [value]="opt.key">{{opt.value}}</option>
+      <option
+        *ngFor="let opt of question.options"
+        [value]="opt.key"
+        class=""
+      >
+        {{opt.value}}
+      </option>
     </select>
   </div>
-  <div *ngIf="!isValid" >{{question.label}} is required</div>
+  <div *ngIf="!isValid" class="text-sm text-red-600 bg-red-100 px-3 py-2 rounded-md" >{{question.label}} is required</div>
 </div>
 
 
