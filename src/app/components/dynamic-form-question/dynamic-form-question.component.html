@@ -1,7 +1,8 @@
 
-<div [formGroup]="form" class="mb-3">
-  <label [attr.for]="question.key" class="text-sm font-bold" >{{question.value}}</label>
+<div [formGroup]="form" class="mb-3 text-black/90">
+  <label [attr.for]="question.key" class="text-sm font-bold" >{{question.label}}</label>
   <div [ngSwitch]="question.controlType">
+    <!-- Input -->
     <input
       *ngSwitchCase="'textbox'"
       [formControlName]="question.key"
@@ -9,11 +10,13 @@
       [id]="question.key"
       class="w-full px-3 py-2 border rounded-md"
     >
+
+    <!-- Select -->
     <select
       *ngSwitchCase="'dropdown'"
       [id]="question.key"
       [formControlName]="question.key"
-      class="border w-60 h-10 text-black/90 px-1"
+      class="border w-60 h-10 px-1"
     >
       <option
         *ngFor="let opt of question.options"
@@ -23,11 +26,23 @@
         {{opt.value}}
       </option>
     </select>
+
+    <!-- Radio button -->
+    <div *ngSwitchCase="'radiobtn'">
+      <div *ngFor="let opt of question.options" class="flex items-center gap-x-2">
+        <input
+          type="radio"
+          [name]="question.key"
+          [value]="opt.key"
+          [formControlName]="question.key"
+        />
+        <label>{{opt.value}}</label>
+      </div>
+    </div>
+
   </div>
   <div *ngIf="!isValid" class="text-sm text-red-600 bg-red-100 px-3 py-2 rounded-md" >{{question.label}} is required</div>
 </div>
-
-
 
 
 

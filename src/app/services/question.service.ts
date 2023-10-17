@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { QuestionBase } from '../base-class/question-base';
 import { DropdownQuestion } from '../type-of-controls/dropdown-question';
 import { TextBoxQuestion } from '../type-of-controls/text-box-question';
+import { RadioButtonQuestion } from '../type-of-controls/radio-button-question';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -20,7 +21,7 @@ export class QuestionService {
           { key: 'good', value: 'Good' },
           { key: 'unproven', value: 'Unproven' },
         ],
-        order: 4
+        order: 3
       }),
 
       new TextBoxQuestion({
@@ -37,6 +38,18 @@ export class QuestionService {
         required: true,
         type: 'email',
         order: 2
+      }),
+
+      new RadioButtonQuestion({
+        key: 'power',
+        label: 'Hero power',
+        options: [
+          { key: 'superpower', value: 'Superpower'},
+          { key: 'water', value: 'Water'},
+          { key: 'fire', value: 'Fire'},
+          { key: 'air', value: 'Air'},
+        ],
+        order: 4
       }),
 
     ];
