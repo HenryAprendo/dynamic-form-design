@@ -4,6 +4,7 @@ import { DropdownQuestion } from '../type-of-controls/dropdown-question';
 import { TextBoxQuestion } from '../type-of-controls/text-box-question';
 import { RadioButtonQuestion } from '../type-of-controls/radio-button-question';
 import { CheckBoxQuestion } from '../type-of-controls/check-box-question';
+import { TextAreaQuestion } from '../type-of-controls/text-area-question';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -56,12 +57,27 @@ export class QuestionService {
       }),
 
       new CheckBoxQuestion({
-        key: 'aliasForName',
-        label: 'change to a hero alias',
+        key: 'heroAlias',
+        label: 'Hero alias',
         type: 'checkbox',
         value: false,
         order: 5
-      })
+      }),
+
+      new TextBoxQuestion({
+        key: 'password',
+        label: 'Password',
+        required: true,
+        type: 'password',
+        order: 6
+      }),
+
+      new TextAreaQuestion({
+        key: 'description',
+        label: 'Description',
+        required: true,
+        order: 7
+      }),
 
     ];
 
