@@ -28,7 +28,7 @@
     </select>
 
     <!-- Radio button -->
-    <div *ngSwitchCase="'radiobtn'">
+    <fieldset *ngSwitchCase="'radiobtn'">
       <div *ngFor="let opt of question.options" class="flex items-center gap-x-2">
         <input
           type="radio"
@@ -38,7 +38,15 @@
         />
         <label>{{opt.value}}</label>
       </div>
-    </div>
+    </fieldset>
+
+    <!-- Checkbox -->
+    <fieldset *ngSwitchCase="'checkbox'" >
+      <div class="flex items-center gap-x-2">
+        <input [type]="question.type" [id]="question.key" [name]="question.key" [formControlName]="question.key" >
+        <label [attr.for]="question.key">{{question.label}}</label>
+      </div>
+    </fieldset>
 
   </div>
   <div *ngIf="!isValid" class="text-sm text-red-600 bg-red-100 px-3 py-2 rounded-md" >{{question.label}} is required</div>

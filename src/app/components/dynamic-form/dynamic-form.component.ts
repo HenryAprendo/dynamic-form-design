@@ -17,13 +17,13 @@ export class DynamicFormComponent implements OnInit {
 
   private qcs = inject(QuestionControlService);
 
-  @Input() questions: QuestionBase<string>[] | null = [];
+  @Input() questions: QuestionBase<string|boolean>[] | null = [];
 
   form!:FormGroup;
   payLoad = '';
 
   ngOnInit(): void {
-    this.form = this.qcs.toFormGroup(this.questions as QuestionBase<string>[]);
+    this.form = this.qcs.toFormGroup(this.questions as QuestionBase<string|boolean>[]);
   }
 
   onSubmit(){

@@ -17,7 +17,7 @@ export class QuestionBase<T> {
   label: string;
 
   /**
-   * Define si el control tiene un valor requerido y agrega un
+   * Define si el control tiene un valor requerido y agrega un validador required
    */
   required: boolean;
 
@@ -65,24 +65,4 @@ export class QuestionBase<T> {
   }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

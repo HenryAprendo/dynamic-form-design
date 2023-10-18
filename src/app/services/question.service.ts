@@ -3,6 +3,7 @@ import { QuestionBase } from '../base-class/question-base';
 import { DropdownQuestion } from '../type-of-controls/dropdown-question';
 import { TextBoxQuestion } from '../type-of-controls/text-box-question';
 import { RadioButtonQuestion } from '../type-of-controls/radio-button-question';
+import { CheckBoxQuestion } from '../type-of-controls/check-box-question';
 import { of } from 'rxjs';
 
 @Injectable({
@@ -11,7 +12,8 @@ import { of } from 'rxjs';
 export class QuestionService {
 
   getQuestions(){
-    const questions: QuestionBase<string>[] = [
+    const questions: QuestionBase<string|boolean>[] = [
+
       new DropdownQuestion({
         key: 'brave',
         label: 'Bravery Rating',
@@ -43,6 +45,7 @@ export class QuestionService {
       new RadioButtonQuestion({
         key: 'power',
         label: 'Hero power',
+        required: true,
         options: [
           { key: 'superpower', value: 'Superpower'},
           { key: 'water', value: 'Water'},
@@ -51,6 +54,14 @@ export class QuestionService {
         ],
         order: 4
       }),
+
+      new CheckBoxQuestion({
+        key: 'aliasForName',
+        label: 'change to a hero alias',
+        type: 'checkbox',
+        value: false,
+        order: 5
+      })
 
     ];
 

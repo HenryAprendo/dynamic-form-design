@@ -13,7 +13,7 @@ export class QuestionControlService {
    * @param questions Instancias del tipo QuestionBase(TextBoxQuestion,DropdownQuestion)
    * @returns Un grupo de formulario
    */
-  toFormGroup(questions:QuestionBase<string>[]): FormGroup<any> {
+  toFormGroup(questions:QuestionBase<string|boolean>[]): FormGroup<any> {
     const group: any = {};
 
     questions.forEach(question => {
