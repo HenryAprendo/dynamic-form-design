@@ -13,7 +13,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class DynamicFormQuestionComponent {
 
-  @Input({ required: true }) question!: QuestionBase<string|boolean>;
+  @Input({ required: true }) question!: QuestionBase<string|boolean|number>;
 
   @Input() form!: FormGroup;
 

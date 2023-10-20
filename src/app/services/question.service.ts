@@ -75,9 +75,9 @@ export class QuestionService {
       new TextAreaQuestion({
         key: 'description',
         label: 'Description',
-        required: true,
+        required:true,
         order: 7
-      }),
+      })
 
     ];
 
