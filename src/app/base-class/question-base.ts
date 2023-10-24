@@ -1,3 +1,4 @@
+import { ValidatorsCustom } from '../base-class/validators';
 
 export class QuestionBase<T> {
 
@@ -17,9 +18,9 @@ export class QuestionBase<T> {
   label: string;
 
   /**
-   * Define si el control tiene un valor requerido y agrega un validador required
+   * Set de validadores para controles de formularios
    */
-  required: boolean;
+  validators: ValidatorsCustom;
 
   /**
    * Indica el orden en el que se representaran los controles
@@ -45,7 +46,7 @@ export class QuestionBase<T> {
     value?: T;
     key?: string;
     label?: string;
-    required?: boolean;
+    validators?: ValidatorsCustom;
     order?: number;
     controlType?: string;
     type?: string;
@@ -56,7 +57,7 @@ export class QuestionBase<T> {
     this.value = options.value;
     this.key = options.key ?? '';
     this.label = options.label ?? '';
-    this.required = !!options.required;
+    this.validators = options.validators ?? {} as ValidatorsCustom;
     this.order = options.order === undefined ? 1 : options.order;
     this.controlType = options.controlType ?? '';
     this.type = options.type ?? '';
@@ -65,4 +66,3 @@ export class QuestionBase<T> {
   }
 
 }
-

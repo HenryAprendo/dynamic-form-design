@@ -6,6 +6,7 @@ import { RadioButtonQuestion } from '../type-of-controls/radio-button-question';
 import { CheckBoxQuestion } from '../type-of-controls/check-box-question';
 import { TextAreaQuestion } from '../type-of-controls/text-area-question';
 import { of } from 'rxjs';
+import { ValidatorsCustom } from '../base-class/validators';
 
 @Injectable({
   providedIn: 'root'
@@ -31,14 +32,14 @@ export class QuestionService {
         key: 'firstName',
         label: 'First name',
         value: 'Bombasto',
-        required: true,
+        validators: new ValidatorsCustom().setReq(),
         order: 1
       }),
 
       new TextBoxQuestion({
         key: 'emailAddress',
         label: 'Email',
-        required: true,
+        validators: new ValidatorsCustom().setReq(),
         type: 'email',
         order: 2
       }),
@@ -46,7 +47,7 @@ export class QuestionService {
       new RadioButtonQuestion({
         key: 'power',
         label: 'Hero power',
-        required: true,
+        validators: new ValidatorsCustom().setReq(),
         options: [
           { key: 'superpower', value: 'Superpower'},
           { key: 'water', value: 'Water'},
@@ -67,7 +68,11 @@ export class QuestionService {
       new TextBoxQuestion({
         key: 'password',
         label: 'Password',
-        required: true,
+        validators: new ValidatorsCustom()
+                          .setReq()
+                          .setMinLength(4)
+                          .setMaxLength(10),
+
         type: 'password',
         order: 6
       }),
@@ -75,7 +80,7 @@ export class QuestionService {
       new TextAreaQuestion({
         key: 'description',
         label: 'Description',
-        required:true,
+        validators: new ValidatorsCustom().setReq(),
         order: 7
       })
 
